@@ -391,6 +391,20 @@
     onEnter: (els) => gsap.to(els, { y: 0, opacity: 1, duration: 1.1, stagger: 0.1, ease: "expo.out", overwrite: true }),
   });
 
+  /* Contact background: slow drift and zoom on the van photo */
+  gsap.fromTo(".contact__bg img", { yPercent: -6, scale: 1.12 }, {
+    yPercent: 6, scale: 1,
+    ease: "none",
+    scrollTrigger: { trigger: ".contact", start: "top bottom", end: "bottom top", scrub: true },
+  });
+
+  /* On the road: photo opens out from a framed card as it scrolls in */
+  gsap.timeline({
+    scrollTrigger: { trigger: ".fleet__frame", start: "top 95%", end: "center 55%", scrub: 0.6 },
+  })
+    .fromTo(".fleet__frame", { clipPath: "inset(10% 8% 10% 8% round 14px)" }, { clipPath: "inset(0% 0% 0% 0% round 14px)", ease: "none" }, 0)
+    .fromTo(".fleet__frame img", { scale: 1.25 }, { scale: 1, ease: "none" }, 0);
+
   /* CTA band subtle parallax */
   gsap.fromTo(".cta-band .h2", { x: -40 }, {
     x: 0, ease: "none",

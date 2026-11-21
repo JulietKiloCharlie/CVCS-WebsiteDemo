@@ -193,8 +193,9 @@
   const intro = gsap.timeline({ defaults: { ease: "expo.out" }, delay: 0.15 });
   intro
     .from(".hero__letter", { yPercent: 110, xPercent: -20, opacity: 0, skewX: -20, duration: 1.3, stagger: 0.08 })
-    .from(".hero__logo .logo__divider", { scaleY: 0, duration: 1 }, "-=0.9")
-    .from(".hero__logo .logo__sub", { x: -30, opacity: 0, duration: 1 }, "-=0.8")
+    .from(".hero__logo .logo__wing--l i", { xPercent: -60, opacity: 0, duration: 1.1, stagger: 0.07 }, "-=1.0")
+    .from(".hero__logo .logo__wing--r i", { xPercent: 60, opacity: 0, duration: 1.1, stagger: 0.07 }, "<")
+    .from(".hero__logo .logo__sub", { y: 16, opacity: 0, duration: 1 }, "-=0.8")
     .from(".hero__eyebrow", { y: 20, opacity: 0, duration: 1 }, "-=0.9")
     .from(".hero__tagline", { y: 24, opacity: 0, duration: 1 }, "-=0.8")
     .from(".hero__sections .chip", { y: 24, opacity: 0, duration: 0.9, stagger: 0.07 }, "-=0.75")

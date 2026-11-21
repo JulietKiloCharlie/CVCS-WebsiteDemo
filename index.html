@@ -20,9 +20,12 @@
   <header class="header" id="header">
     <div class="container header__inner">
       <a href="#top" class="logo logo--sm" aria-label="CVCS Fleet Washing, back to top">
-        <span class="logo__mark">CVCS</span>
-        <span class="logo__divider"></span>
-        <span class="logo__sub">Fleet<br />Washing</span>
+        <span class="logo__row">
+          <span class="logo__wing logo__wing--l"><i></i><i></i><i></i></span>
+          <span class="logo__mark">CVCS</span>
+          <span class="logo__wing logo__wing--r"><i></i><i></i><i></i></span>
+        </span>
+        <span class="logo__sub">Fleet Washing</span>
       </a>
 
       <nav class="nav" aria-label="Main">
@@ -64,11 +67,14 @@
 
         <h1 class="hero__logo" aria-label="CVCS Fleet Washing">
           <span class="logo logo--xl">
-            <span class="logo__mark">
-              <span class="hero__letter">C</span><span class="hero__letter">V</span><span class="hero__letter">C</span><span class="hero__letter">S</span>
+            <span class="logo__row">
+              <span class="logo__wing logo__wing--l"><i></i><i></i><i></i></span>
+              <span class="logo__mark">
+                <span class="hero__letter">C</span><span class="hero__letter">V</span><span class="hero__letter">C</span><span class="hero__letter">S</span>
+              </span>
+              <span class="logo__wing logo__wing--r"><i></i><i></i><i></i></span>
             </span>
-            <span class="logo__divider"></span>
-            <span class="logo__sub">Fleet<br />Washing</span>
+            <span class="logo__sub">Fleet Washing</span>
           </span>
         </h1>
 
@@ -139,6 +145,19 @@
                 </g>
               </symbol>
 
+              <g id="truck-wings">
+                <g transform="translate(-6 0)">
+                  <polygon points="200.7,140 322.7,140 318,153 196,153" />
+                  <polygon points="218.7,160 315.7,160 311,173 214,173" />
+                  <polygon points="236.7,180 308.7,180 304,193 232,193" />
+                </g>
+                <g transform="translate(12 0)">
+                  <polygon points="586.7,140 708.7,140 704,153 582,153" />
+                  <polygon points="579.7,160 690.7,160 686,173 575,173" />
+                  <polygon points="572.7,180 672.7,180 668,193 568,193" />
+                </g>
+              </g>
+
               <clipPath id="clean-clip">
                 <rect class="wash__clip" x="0" y="0" width="0" height="420" />
               </clipPath>
@@ -159,6 +178,7 @@
             <g class="wash__dirty">
               <use href="#truck" />
               <text x="450" y="200" class="truck__brand truck__brand--dirty" text-anchor="middle">CVCS</text>
+              <use href="#truck-wings" class="truck__wings truck__wings--dirty" />
               <g class="wash__grime"></g>
             </g>
 
@@ -171,6 +191,7 @@
               <rect x="40" y="62" width="820" height="226" rx="6" class="truck__fill" />
               <use href="#truck" />
               <text x="450" y="200" class="truck__brand" text-anchor="middle">CVCS</text>
+              <use href="#truck-wings" class="truck__wings" />
               <text x="450" y="236" class="truck__brand-sub" text-anchor="middle">FLEET WASHING</text>
               <g class="wash__shine"></g>
             </g>
@@ -600,9 +621,12 @@
   <footer class="footer">
     <div class="container footer__inner">
       <a href="#top" class="logo logo--sm" aria-label="CVCS Fleet Washing, back to top">
-        <span class="logo__mark">CVCS</span>
-        <span class="logo__divider"></span>
-        <span class="logo__sub">Fleet<br />Washing</span>
+        <span class="logo__row">
+          <span class="logo__wing logo__wing--l"><i></i><i></i><i></i></span>
+          <span class="logo__mark">CVCS</span>
+          <span class="logo__wing logo__wing--r"><i></i><i></i><i></i></span>
+        </span>
+        <span class="logo__sub">Fleet Washing</span>
       </a>
       <nav class="footer__nav" aria-label="Footer">
         <a href="#services">Services</a>

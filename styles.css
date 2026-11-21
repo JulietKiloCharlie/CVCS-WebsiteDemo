@@ -125,13 +125,18 @@ section { position: relative; }
 }
 .muted { color: var(--muted); max-width: 36em; }
 
-/* ---------- Logo (temporary recreation of concept 8) ---------- */
+/* ---------- Logo (recreation of concept 4, pending official SVG) ---------- */
 .logo {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
-  gap: .42em;
   color: var(--gold);
   line-height: 1;
+}
+.logo__row {
+  display: flex;
+  align-items: center;
+  gap: .1em;
 }
 .logo__mark {
   font-family: var(--font-display);
@@ -139,31 +144,36 @@ section { position: relative; }
   font-weight: 800;
   font-style: italic;
   letter-spacing: -.02em;
-  font-size: 1em;
+  line-height: .8;
   display: inline-flex;
 }
-.logo__divider {
-  width: 2px;
-  align-self: stretch;
-  background: currentColor;
-  transform: skewX(-14deg);
-  margin: .04em 0;
+.logo__wing {
+  display: flex;
+  flex-direction: column;
+  gap: .08em;
+  transform: skewX(-24deg);
 }
+.logo__wing--l { align-items: flex-end; }
+.logo__wing--r { align-items: flex-start; }
+.logo__wing i { display: block; height: .125em; background: currentColor; }
+.logo__wing i:nth-child(1) { width: 1.05em; }
+.logo__wing i:nth-child(2) { width: .88em; }
+.logo__wing i:nth-child(3) { width: .71em; }
 .logo__sub {
   font-family: var(--font-display);
   font-stretch: 125%;
-  font-weight: 600;
+  font-weight: 700;
   font-style: italic;
-  font-size: .3em;
-  letter-spacing: .26em;
-  line-height: 1.25;
+  font-size: .25em;
+  letter-spacing: .34em;
+  margin-right: -.34em;
+  margin-top: .45em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
-.logo--sm { font-size: 30px; }
-.logo--sm .logo__sub { font-size: .32em; }
-.logo--xl { font-size: clamp(64px, 13vw, 176px); gap: .3em; }
-.logo--xl .logo__divider { width: clamp(2px, .3vw, 4px); }
-.logo--xl .logo__sub { font-size: .2em; }
+.logo--sm { font-size: 34px; }
+.logo--sm .logo__sub { font-size: .27em; }
+.logo--xl { font-size: clamp(50px, 10vw, 150px); }
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -491,6 +501,8 @@ section { position: relative; }
   fill: var(--gold);
 }
 .truck__brand--dirty { fill: #3B3833; }
+.truck__wings { fill: var(--gold); }
+.truck__wings--dirty { fill: #3B3833; }
 .truck__brand-sub {
   font-family: var(--font-display);
   font-stretch: 125%;
@@ -1145,7 +1157,7 @@ a.contact__v:hover { color: var(--gold); }
 
 @media (max-width: 600px) {
   :root { --header-h: 66px; }
-  .logo--sm { font-size: 24px; }
+  .logo--sm { font-size: 28px; }
   .hide-sm { display: none; }
   .hero__eyebrow .eyebrow__line { display: none; }
   .hero__sections { gap: 8px; }

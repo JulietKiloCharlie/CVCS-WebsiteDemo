@@ -73,9 +73,18 @@
     });
   });
 
-  /* ---------- Quote form (front-end only until a backend is connected) ---------- */
+  /* ---------- Phone (assembled at runtime so it isn't in the page source) ---------- */
+  $$(".js-phone").forEach((a) => {
+    const d = a.dataset.ph.split("").reverse().join("");
+    a.href = `tel:+353${d.slice(1)}`;
+    a.textContent = `${d.slice(0, 3)} ${d.slice(3, 6)} ${d.slice(6)}`;
+    a.removeAttribute("data-ph");
+  });
+
+  /* ---------- Quote form ---------- */
   const form = $("#quote-form");
-  form.addEventListener("submit", (e) => {
+  const inbox = ["rcallery.cvcs", "gmail.com"].join("@");
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const note = $(".form__note", form);
     let ok = true;
@@ -89,8 +98,42 @@
       note.textContent = "Please add your name and a valid email address.";
       return;
     }
-    note.textContent = "Thank you. We'll be in touch shortly with your quote.";
-    form.reset();
+    if (form.elements._honey.value) return;
+
+    const f = form.elements;
+    const vehicles = [...form.querySelectorAll('input[name="vehicles"]:checked')].map((c) => c.value).join(", ");
+    const payload = {
+      _subject: `New quote request: ${f.name.value.trim()}${f.company.value.trim() ? ` (${f.company.value.trim()})` : ""}`,
+      _template: "table",
+      _replyto: f.email.value.trim(),
+      Name: f.name.value.trim(),
+      Company: f.company.value.trim(),
+      Email: f.email.value.trim(),
+      Phone: f.phone.value.trim(),
+      "Vehicle types": vehicles,
+      "Fleet size": f.fleet.value,
+      "Location / depot": f.location.value.trim(),
+      Message: f.message.value.trim(),
+    };
+
+    const button = $("button[type=submit]", form);
+    button.disabled = true;
+    note.textContent = "Sending…";
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${inbox}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (!res.ok || (String(data.success) !== "true" && !/activat/i.test(data.message || ""))) throw new Error(data.message);
+      note.textContent = "Thank you. We'll be in touch shortly with your quote.";
+      form.reset();
+    } catch {
+      note.textContent = "Sorry, that didn't send. Please try again or give us a call.";
+    } finally {
+      button.disabled = false;
+    }
   });
 
   /* ---------- Hero mist ---------- */

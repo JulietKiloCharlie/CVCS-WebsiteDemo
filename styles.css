@@ -475,13 +475,15 @@ section { position: relative; }
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: clamp(16px, 3vh, 40px);
   padding: calc(var(--header-h) + 10px) 0 40px;
   overflow: hidden;
 }
 .wash__head .h2 { margin: 0; }
 .wash__stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
@@ -606,6 +608,70 @@ section { position: relative; }
   background: var(--gold);
   transform: rotate(45deg);
   flex: none;
+}
+
+/* ---------- Clients ---------- */
+.clients {
+  display: flex;
+  align-items: center;
+  background: var(--black);
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+.clients__label {
+  flex: none;
+  margin: 0;
+  padding: 0 clamp(18px, 2.4vw, 32px) 0 var(--pad, clamp(20px, 4vw, 56px));
+  border-right: 1px solid var(--line-soft);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: .72rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.clients__row {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  padding: 16px 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.clients__track {
+  display: flex;
+  width: max-content;
+  animation: clients-scroll 70s linear infinite;
+}
+.clients__row:hover .clients__track { animation-play-state: paused; }
+.clients__list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.clients__list li {
+  display: flex;
+  align-items: center;
+  padding-right: clamp(36px, 4.5vw, 64px);
+}
+.clients__list img {
+  display: block;
+  max-width: none;
+  opacity: .68;
+  transition: opacity .35s var(--ease);
+}
+.clients__list li:hover img { opacity: 1; }
+@keyframes clients-scroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .clients__track { animation-duration: 240s; }
+}
+@media (max-width: 600px) {
+  .clients__label { padding: 0 14px 0 16px; font-size: .62rem; letter-spacing: .2em; }
+  .clients__row { padding: 14px 0; }
+  .clients__track { zoom: .8; }
 }
 
 /* ---------- Cards ---------- */
@@ -1113,6 +1179,7 @@ a.contact__v:hover { color: var(--gold); }
 .chips input:checked + span { background: var(--gold); border-color: var(--gold); color: var(--black); }
 .chips input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
 
+.form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .form__note { margin: 0; font-size: .9rem; color: var(--gold); min-height: 1.4em; }
 
 /* ---------- On the road ---------- */
